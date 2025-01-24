@@ -29,7 +29,8 @@ pub mod favorites_program {
 pub struct SetFavorites<'info> {
     #[account(mut)]
     pub user: Signer<'info>,
-    #[account(init_if_needed, 
+    #[account(
+        init_if_needed, 
         payer = user, 
         space = ANCHOR_DISCRIMINATOR_SIZE + Favorites::INIT_SPACE,
         seeds = [b"favorites", user.key().as_ref()],
